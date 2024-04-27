@@ -24,12 +24,12 @@ const Footer = () => {
             <b>Support</b>
 
             <ul>
-              <li>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</li>
+              <li>New Delhi,India.</li>
               <li>
                 <a href="mailto:exclusive@gmail.com">exclusive@gmail.com</a>
               </li>
               <li>
-                <a href="tel:+88015-88888-9999">+88015-88888-9999</a>
+                <a href="tel:+918700045702">+918700045702</a>
               </li>
             </ul>
           </section>
@@ -75,15 +75,15 @@ const Footer = () => {
             </ul>
           </section>
 
-          <section className={s.section5}>
+          {/* <section className={s.section5}>
             <DownloadAppInfo />
-          </section>
+          </section> */}
         </section>
 
         <CopyRightsText />
       </div>
 
-      <RepoStarsForks />
+      {/* <RepoStarsForks /> */}
     </footer>
   );
 };

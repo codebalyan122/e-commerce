@@ -8,12 +8,12 @@ const CopyRightsText = () => {
     <p className={s.copyRights}>
       <span>Website designed by</span>
       <a href={designerProfile} target="_blank">
-        Rimel
+        Shivam Balayan
       </a>
 
       <span>and coded by</span>
       <a href={developerProfile} target="_blank">
-        Moamal Alaa
+        Shivam balayan
       </a>
     </p>
   );
