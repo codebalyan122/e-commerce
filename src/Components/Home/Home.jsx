@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>E-Commercew</title>
+        <title>E-Commerce</title>
       </Helmet>
 
       <div className={s.home}>

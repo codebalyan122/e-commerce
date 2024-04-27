@@ -6,10 +6,14 @@ import s from "./EditProfileInputs.module.scss";
 const EditProfileInputs = () => {
   const { loginInfo } = useSelector((state) => state.user);
   const { username, emailOrPhone } = loginInfo;
-  const firstLastUserName = username.split(" ");
+
+  const firstLastUserName =
+    loginInfo?.data?.name?.split(" ") || username.split(" ");
   const [firstName, setFirstName] = useState(firstLastUserName[0]);
   const [lastName, setLastName] = useState(firstLastUserName[1]);
-  const [emailOrPhoneState, setEmailOrPhoneState] = useState(emailOrPhone);
+  const [emailOrPhoneState, setEmailOrPhoneState] = useState(
+    emailOrPhone || ""
+  );
   const [newPassword, setNewPassword] = useState("");
 
   return (
@@ -21,6 +25,7 @@ const EditProfileInputs = () => {
             name: "firstName",
             value: firstName,
             setValue: setFirstName,
+            readOnly: loginInfo?.data?.sub,
           }}
         />
 
@@ -30,6 +35,7 @@ const EditProfileInputs = () => {
             name: "lastName",
             value: lastName,
             setValue: setLastName,
+            readOnly: loginInfo?.data?.sub,
           }}
         />
 
@@ -40,46 +46,53 @@ const EditProfileInputs = () => {
             value: emailOrPhoneState,
             setValue: setEmailOrPhoneState,
             placeholder: "example@gmail.com",
+            readOnly: loginInfo?.data?.sub,
           }}
         />
-
-        <EditProfileInput
-          inputData={{
-            label: "Address",
-            name: "address",
-            placeholder: "EX Kingston, 5236, United State",
-          }}
-        />
+        {!loginInfo?.data?.sub ? (
+          <EditProfileInput
+            inputData={{
+              label: "Address",
+              name: "address",
+              placeholder: "EX Kingston, 5236, United State",
+            }}
+          />
+        ) : (
+          ""
+        )}
       </section>
+      {!loginInfo?.data?.sub ? (
+        <section className={s.passwordInputs}>
+          <EditProfileInput
+            inputData={{
+              type: "password",
+              label: "Password Changes",
+              name: "currentPass",
+              placeholder: "Current Password",
+            }}
+          />
 
-      <section className={s.passwordInputs}>
-        <EditProfileInput
-          inputData={{
-            type: "password",
-            label: "Password Changes",
-            name: "currentPass",
-            placeholder: "Current Password",
-          }}
-        />
+          <EditProfileInput
+            inputData={{
+              type: "password",
+              name: "newPass",
+              placeholder: "New Password",
+              value: newPassword,
+              setValue: setNewPassword,
+            }}
+          />
 
-        <EditProfileInput
-          inputData={{
-            type: "password",
-            name: "newPass",
-            placeholder: "New Password",
-            value: newPassword,
-            setValue: setNewPassword,
-          }}
-        />
-
-        <EditProfileInput
-          inputData={{
-            type: "password",
-            name: "confirmPass",
-            placeholder: "Confirm New Password",
-          }}
-        />
-      </section>
+          <EditProfileInput
+            inputData={{
+              type: "password",
+              name: "confirmPass",
+              placeholder: "Confirm New Password",
+            }}
+          />
+        </section>
+      ) : (
+        ""
+      )}
     </section>
   );
 };

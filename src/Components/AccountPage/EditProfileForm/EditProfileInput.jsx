@@ -10,6 +10,7 @@ const EditProfileInput = ({
     required = false,
     autoComplete = false,
     placeholder = "",
+    readOnly,
   },
 }) => {
   return (
@@ -25,6 +26,7 @@ const EditProfileInput = ({
         autoComplete={`${autoComplete ? "on" : "off"}`}
         onChange={setValue ? (e) => setValue(e.target.value) : null}
         placeholder={placeholder}
+        readOnly={readOnly}
       />
     </div>
   );

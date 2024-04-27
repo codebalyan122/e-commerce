@@ -10,7 +10,7 @@ import EditProfileForm from "./EditProfileForm/EditProfileForm";
 const AccountPage = () => {
   const { loginInfo } = useSelector((state) => state.user);
   const { t } = useTranslation();
-
+  console.log(loginInfo);
   return (
     <>
       <Helmet>
@@ -23,7 +23,7 @@ const AccountPage = () => {
             <PagesHistory history={["/", t("nav.profile")]} />
 
             <p className={s.welcomeMessage}>
-              Welcome! <Link to="/profile">{loginInfo.username}</Link>
+              Welcome! <Link to="/profile">{loginInfo?.data?.given_name}</Link>
             </p>
           </div>
 

@@ -1,4 +1,5 @@
 export function simpleValidationCheck(inputs) {
+  console.log("inputs", inputs);
   let isFormValid = false;
 
   inputs.forEach((input) => {
@@ -6,6 +7,7 @@ export function simpleValidationCheck(inputs) {
 
     if (input.name === "username") {
       const isUserNameContainsTwoWords = input.value.split(" ").length === 2;
+
       addOrRemoveClass = !isUserNameContainsTwoWords ? "add" : "remove";
     } else {
       addOrRemoveClass = input.value === "" ? "add" : "remove";
